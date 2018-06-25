@@ -1,0 +1,23 @@
+server:
+  port: 9001
+
+eureka:
+  instance:
+    metadata-map:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#    hostname: localhost
+    perferIpAddress: true
+
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+#      defaultZone: http://eureka-register:9101/eureka/
+      defaultZone: http://localhost:9001/eureka/
+  server:
+    # 关闭自我保护
+    enable-self-preservation: false
+
+management:
+  security:
+    enabled: false
