@@ -1,0 +1,5 @@
+cloud:
+  config:
+    server:
+      native:
+        search-locations: config

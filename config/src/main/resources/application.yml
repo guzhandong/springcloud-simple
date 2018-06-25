@@ -1,0 +1,93 @@
+#server:
+#  port: 9188
+#spring:
+#  application:
+#    name: config-service
+#  cloud:
+#    config:
+#      label: dev
+#      server:
+#        git:
+#          uri: http://192.168.11.20/riskbell/config-repo.git
+#          username: guzhandong@chinadaas.com
+#          password: zhandong@2015
+#        bootstrap: false
+#  rabbitmq:
+#    host: d119
+#    port: 5672
+#    username: guest
+#    password: guest
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://d119:19001/eureka/
+#  instance:
+#    metadata-map:
+#      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#    hostname: config-service
+#    prefer-ip-address: true
+#
+#management:
+#  security:
+#    enabled: false
+#
+
+
+
+
+server:
+  port: 9002
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        git:
+#          uri: file:///Users/guzhandong/workfile/github_workfile/springcloud-simple/config/config
+        native:
+          search-locations: config
+  rabbitmq:
+    addresses: d119:15672
+    username: guest
+    password: guest
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9001/eureka/
+  instance:
+    metadata-map:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    hostname: config-center
+    prefer-ip-address: true
+management:
+  security:
+    enabled: false
+
+
+#
+#
+#spring:
+#  profiles:
+#    active: native
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: config
+#  rabbitmq:
+#    addresses: rabbitmq.pub:5672
+#    username: guest
+#    password: guest
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://register-center:9001/eureka/
+#  instance:
+#    metadata-map:
+#      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#    hostname: config-center
+#    prefer-ip-address: true
+#management:
+#  security:
+#    enabled: false

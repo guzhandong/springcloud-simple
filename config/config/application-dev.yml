@@ -1,0 +1,35 @@
+eureka:
+  instance:
+#    hostname: 10.20.20.118
+    prefer-ip-address: true
+    metadata-map:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9001/eureka/
+hystrix:
+  threadpool:
+    default:
+      maxQueueSize: 100
+      coreSize: 50
+      queueSizeRejectionThreshold: 100
+      maximumSize: 100
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+ribbon:
+  ConnectTimeout: 300000
+  ReadTimeout: 300000
+
+logging:
+  level:
+    root: WARN
+    org.springframework: INFO
+management:
+  security:
+    enabled: false
+etcd:
+  hosts: 192.168.100.203:2379,192.168.100.204:2379,192.168.100.205:2379
